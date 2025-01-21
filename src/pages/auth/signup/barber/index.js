@@ -1,4 +1,7 @@
-const form = document.getElementById("wf-form-Sign-up-for-Barber");
+const authToken = getCookie("authToken");
+
+if (!authToken) {
+  const form = document.getElementById("wf-form-Sign-up-for-Barber");
 const errorContainer = document.querySelector(".error_message-container");
 const errorMessageElement = document.getElementById("error-message-barbershop");
 
@@ -77,4 +80,8 @@ if (form && form.tagName === "FORM") {
   console.error(
     "Form with ID 'wf-form-Sign-up-for-Barber' not found or is not a valid form element."
   );
+}
+} else {
+  // Redirect to home page if user has token 
+  window.location.href = "https://barbermate-v2.webflow.io";
 }

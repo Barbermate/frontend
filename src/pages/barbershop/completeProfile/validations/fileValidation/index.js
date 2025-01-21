@@ -1,6 +1,7 @@
 // Select the input element with the name "fileUpload"
 const fileInput = document.querySelector('input[name="avatar"]');
 const profilePicture = document.querySelector(".profile_picture"); // Select the image element with the class "profile_picture"
+const fileUploadButton = document.querySelector(".file_upload-button");
 
 // Define the maximum file size (3MB in bytes)
 const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB = 3 * 1024 * 1024 bytes
@@ -52,4 +53,12 @@ if (fileInput) {
   });
 } else {
   console.error('Input element with name "fileUpload" not found.');
+}
+
+
+// Function to choose file on click of the image
+if (profilePicture && fileUploadButton) {
+  profilePicture.addEventListener("click", function () {
+    fileUploadButton.click(); // Trigger a click on the file upload button
+  });
 }
