@@ -1,5 +1,4 @@
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiYmFyYmVybWF0ZSIsImEiOiJjbTYxejBsZWQwdmh2MnFzYjB2cnBkaDU2In0.C1wsnCHgwl-wSUwZFpCDYw";
+mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
 
 const addressInput = document.getElementById("address");
 const suggestionsList = document.getElementById("suggestionsID");
