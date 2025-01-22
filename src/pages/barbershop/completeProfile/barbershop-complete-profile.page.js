@@ -5,13 +5,11 @@ if (!authToken) {
   window.location.href = "https://barbermate-v2.webflow.io/login";
 } else {
   // Define the backend URL
-  const BACKEND_URL = `${BASE_URL}/barber/profile/update`;
+  const BACKEND_URL = `${BASE_URL}/barbershop/profile/update`;
 
   // Select the form and error elements
-  const form = document.getElementById("wf-form-Complete-your-profile");
-  const errorContainer = document.querySelector(".error_message-container");
-  const errorMessageElement = document.getElementById(
-    "error-message-barbershop"
+  const form = document.getElementById(
+    "wf-form-Complete-your-profile-Barbershop"
   );
 
   if (form && form.tagName === "FORM") {
@@ -40,33 +38,16 @@ if (!authToken) {
           userProfile = data.profile;
 
           window.location.href =
-            "https://barbermate-v2.webflow.io/barber-profile";
+            "https://barbermate-v2.webflow.io/barbershop-profile";
           return; // Stop further processing
         } else {
           // If response status is not OK, handle the error
           const errorData = await response.json();
 
-          // Check if the backend returned an error message
-          const backendErrorMessage =
-            errorData.message || "An unknown error occurred.";
-
-          // Display the backend error message
-          if (errorMessageElement) {
-            errorMessageElement.textContent = backendErrorMessage;
-          }
-
-          // Show the error container
-          if (errorContainer) errorContainer.style.display = "block";
+          showErrorMessage(errorData.message);
         }
       } catch (error) {
-        // Display a generic error message if something goes wrong
-        if (errorMessageElement) {
-          errorMessageElement.textContent =
-            "An unexpected error occurred. Please try again.";
-        }
-
-        // Show the error container
-        if (errorContainer) errorContainer.style.display = "block";
+        showErrorMessage();
       }
     });
   }

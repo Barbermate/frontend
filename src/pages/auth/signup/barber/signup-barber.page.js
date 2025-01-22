@@ -1,9 +1,10 @@
 const authToken = getCookie("authToken");
 
-if (!authToken) {
+if (authToken) {
+  // Redirect to home page if user has token
+  history.back();
+} else {
   const form = document.getElementById("wf-form-Sign-up-for-Barber");
-  const errorContainer = document.querySelector(".error_message-container");
-  const errorMessageElement = document.getElementById("error-message-barbershop");
 
   if (form && form.tagName === "FORM") {
     form.addEventListener("submit", async function (event) {
@@ -17,8 +18,6 @@ if (!authToken) {
         formData.forEach((value, key) => {
           formObject[key] = value;
         });
-
-        console.log("Data being sent:", formObject); // Log the data being sent
 
         const url = `${BASE_URL}auth/signup/barber`;
 
@@ -38,16 +37,7 @@ if (!authToken) {
         if (!response.ok) {
           // If response status is not OK, handle the error
           const errorData = await response.json();
-          const backendErrorMessage = errorData.error || errorData.message;
-
-          // Display the backend error message if it exists, otherwise show the custom message
-          if (errorMessageElement) {
-            errorMessageElement.textContent =
-              backendErrorMessage ||
-              "An unexpected error occurred. Please try again later.";
-          }
-
-          if (errorContainer) errorContainer.style.display = "block"; // Show the container
+          showErrorMessage(errorData.message);
           return; // Stop further processing
         }
 
@@ -65,23 +55,12 @@ if (!authToken) {
         }
       } catch (error) {
         console.error("Error during form submission:", error);
-        if (errorMessageElement) {
-          errorMessageElement.textContent =
-            "An unexpected error occurred. Please try again later.";
-        }
-        if (errorContainer) errorContainer.style.display = "block"; // Show the container
+        showErrorMessage();
       }
     });
-
-    console.log(
-      "Custom submission handler added to 'wf-form-Sign-up-for-Barber'."
-    );
   } else {
     console.error(
       "Form with ID 'wf-form-Sign-up-for-Barber' not found or is not a valid form element."
     );
   }
-} else {
-  // Redirect to home page if user has token 
-  history.back();
 }

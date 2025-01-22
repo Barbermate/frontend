@@ -14,44 +14,42 @@ forms.forEach((form) => {
   const lastNameInput = form.querySelector("#lastName");
 
   // Define validation patterns
-  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const passwordPattern =
-    /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*(),.?':{}|<>]{8,}$/;
+  const emailPattern = new RegExp(
+    "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+  );
+  const passwordPattern = new RegExp("^(?=.*[A-Z])(?=.*\\d).{8,}$");
 
   // Function to validate inputs for this specific form
   function validateInputs() {
-    try {
-      const isEmailValid = emailInput && emailPattern.test(emailInput.value);
-      const isPasswordValid =
-        passwordInput && passwordPattern.test(passwordInput.value);
-      const isTermsAccepted = termsCheckbox ? termsCheckbox.checked : true; // Checkbox is optional
+    const isEmailValid = emailInput && emailPattern.test(emailInput.value);
+    const isPasswordValid =
+      passwordInput && passwordPattern.test(passwordInput.value);
+    const isTermsAccepted = termsCheckbox ? termsCheckbox.checked : true; // Checkbox is optional
 
-      // Check if additional fields are present and populated
-      const isNameBarbershopValid =
-        !nameBarbershopInput || nameBarbershopInput.value.trim() !== "";
-      const isFirstNameValid =
-        !firstNameInput || firstNameInput.value.trim() !== "";
-      const isLastNameValid =
-        !lastNameInput || lastNameInput.value.trim() !== "";
+    // Check if additional fields are present and populated
+    const isNameBarbershopValid =
+      !nameBarbershopInput || nameBarbershopInput.value.trim() !== "";
+    const isFirstNameValid =
+      !firstNameInput || firstNameInput.value.trim() !== "";
+    const isLastNameValid = !lastNameInput || lastNameInput.value.trim() !== "";
 
-      // Enable or disable the button based on validation for this form
-      if (
-        isEmailValid &&
-        isPasswordValid &&
-        isTermsAccepted &&
-        isNameBarbershopValid &&
-        isFirstNameValid &&
-        isLastNameValid
-      ) {
-        submitButton.disabled = false;
-        submitButton.classList.remove("disabled"); // Remove "disabled" combo class
-        form.canSubmit = true; // Custom flag to track if the form can be submitted
-      } else {
-        submitButton.disabled = true;
-        submitButton.classList.add("disabled"); // Add "disabled" combo class
-        form.canSubmit = false; // Prevent form submission
-      }
-    } catch (e) {}
+    // Enable or disable the button based on validation for this form
+    if (
+      isEmailValid &&
+      isPasswordValid &&
+      isTermsAccepted &&
+      isNameBarbershopValid &&
+      isFirstNameValid &&
+      isLastNameValid
+    ) {
+      submitButton.disabled = false;
+      submitButton.classList.remove("disabled"); // Remove "disabled" combo class
+      form.canSubmit = true; // Custom flag to track if the form can be submitted
+    } else {
+      submitButton.disabled = true;
+      submitButton.classList.add("disabled"); // Add "disabled" combo class
+      form.canSubmit = false; // Prevent form submission
+    }
   }
 
   // Add event listeners for real-time validation for this form
