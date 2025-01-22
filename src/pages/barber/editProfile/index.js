@@ -5,7 +5,7 @@ if (!authToken) {
   window.location.href = "https://barbermate-v2.webflow.io/login";
 } else {
   // Define the backend URL
-  const BACKEND_URL = `${BASE_URL}/api/v1/barber/profile/update`;
+  const BACKEND_URL = `${BASE_URL}/barber/profile/update`;
 
 
   // rest of the code

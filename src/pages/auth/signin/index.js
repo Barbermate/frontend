@@ -1,7 +1,7 @@
 const authToken = getCookie("authToken");
 
 if (!authToken) {
-  const form = document.getElementById("wf-form-Login-Form");
+const form = document.getElementById("wf-form-Login-Form");
 const errorContainer = document.querySelector(".error_message-container");
 const errorMessageElement = document.getElementById("error-message-barbershop");
 
