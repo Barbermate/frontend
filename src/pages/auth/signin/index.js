@@ -70,5 +70,4 @@ if (form && form.tagName === "FORM") {
 } else {
   // Redirect the user if he has token
   history.back();
-  //window.location.href = "https://barbermate-v2.webflow.io";
 }

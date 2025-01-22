@@ -84,5 +84,4 @@ if (!authToken) {
 } else {
   // Redirect to home page if user has token 
   history.back();
-  //window.location.href = "https://barbermate-v2.webflow.io";
 }
