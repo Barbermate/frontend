@@ -19,7 +19,7 @@ if (authToken) {
           formObject[key] = value;
         });
 
-        const url = `${BASE_URL}auth/signup/barber`;
+        const url = `${BASE_URL}/auth/signup/barber`;
 
         hideErrorMessage(); // Hide the error message if it is displayed
 
