@@ -21,9 +21,7 @@ if (authToken) {
 
         const url = `${BASE_URL}/auth/signup/barbershop`;
 
-        // Reset error message visibility
-        if (errorContainer) errorContainer.style.display = "none"; // Hide the container
-        if (errorMessageElement) errorMessageElement.textContent = ""; // Clear previous error message
+        hideErrorMessage(); // Hide the error message if it is displayed
 
         // Send the form data to the backend as JSON
         const response = await fetch(url, {

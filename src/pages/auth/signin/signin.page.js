@@ -14,9 +14,7 @@ if (authToken) {
         const formData = new FormData(form); // Create a FormData object
         const url = `${BASE_URL}/auth/signin`;
 
-        // Reset error message visibility
-        if (errorContainer) errorContainer.style.display = "none"; // Hide the container
-        if (errorMessageElement) errorMessageElement.textContent = ""; // Clear previous error message
+        hideErrorMessage(); // Hide the error message if it is displayed
 
         // Send the form data to the backend
         const response = await fetch(url, {

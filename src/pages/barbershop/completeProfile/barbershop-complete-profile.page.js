@@ -20,9 +20,7 @@ if (!authToken) {
 
         const formData = new FormData(form);
 
-        // Reset error message visibility
-        if (errorContainer) errorContainer.style.display = "none"; // Hide the container
-        if (errorMessageElement) errorMessageElement.textContent = ""; // Clear previous error messag
+        hideErrorMessage(); // Hide the error message if it is displayed
 
         // Send the form data to the backend with Authorization header
         const response = await fetch(BACKEND_URL, {

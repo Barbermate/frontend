@@ -12,3 +12,13 @@ function showErrorMessage(text) {
 
   if (errorContainer) errorContainer.style.display = "block"; // Show the container
 }
+
+function hideErrorMessage() {
+  const errorContainer = document.querySelector(".error_message-container");
+  const errorMessageElement = document.getElementById(
+    "error-message-barbershop"
+  );
+
+  if (errorContainer) errorContainer.style.display = "none"; // Hide the container
+  if (errorMessageElement) errorMessageElement.textContent = ""; // Clear previous error message
+}
