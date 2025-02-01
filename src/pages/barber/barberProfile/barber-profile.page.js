@@ -8,3 +8,4 @@ if (!authToken) {
 } else {
   // rest of the code
 }
+
