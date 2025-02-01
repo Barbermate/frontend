@@ -10,7 +10,7 @@ if (!authToken) {
       return;
     }
 
-    if (userData.accountType === "barber") {
+    if (userData.accountType !== "barber") {
       history.back();
       return;
     } else if (userData.profile.isProfileCompleted === false) {
