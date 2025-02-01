@@ -1,3 +1,2 @@
-console.log("user store js");
-
-let userData;
+let userData = JSON.parse(getItemFromLocalStorage("userData"));
+const userDataState = new BehaviorSubject(userData);

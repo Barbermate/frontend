@@ -6,7 +6,5 @@ if (!authToken) {
 } else {
   // Define the backend URL
   const BACKEND_URL = `${BASE_URL}/barbershop/profile/update`;
-
-
   // rest of the code
 }
