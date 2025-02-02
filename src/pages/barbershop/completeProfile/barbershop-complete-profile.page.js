@@ -1,3 +1,11 @@
+import { getCookie } from "../../../services/cookie/cookie.service";
+import { BASE_URL } from "../../../services/config/config.service";
+import {
+  showErrorMessage,
+  hideErrorMessage,
+} from "../../../services/error/error.service";
+import { updateUserProfile } from "../../../store/user.store";
+
 const authToken = getCookie("authToken");
 
 if (!authToken) {
@@ -33,7 +41,7 @@ if (!authToken) {
 
         if (response.ok) {
           const data = await response.json();
-          userProfile = data.profile;
+          updateUserProfile(data.profile);
 
           window.location.href =
             "https://barbermate-v2.webflow.io/barbershop-profile";

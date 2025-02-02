@@ -1,22 +1,14 @@
-function updateUserProfile(profile) {
-  userData.profile = profile;
-  userDataState.next({ ...userData });
-  addItemToLocalStorage("userData", JSON.stringify(userData));
-}
+import { BASE_URL } from "../config/config.service";
+import { getCookie } from "../cookie/cookie.service";
+import { updateUserData } from "../../store/user.store";
 
-function updateUserData(data) {
-  userData = data;
-  userDataState.next(data);
-  addItemToLocalStorage("userData", JSON.stringify(data));
-}
-
-async function getUserData() {
+export async function getUserData() {
   try {
     const response = await fetch(`${BASE_URL}/auth/profile`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${authCookie}`,
+        Authorization: `Bearer ${getCookie("authToken")}`,
       },
     });
 

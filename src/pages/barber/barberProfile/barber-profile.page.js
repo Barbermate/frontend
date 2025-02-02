@@ -1,3 +1,6 @@
+import { getCookie } from "../../../services/cookie/cookie.service";
+import { userData } from "../../../store/user.store";
+
 const authToken = getCookie("authToken");
 
 if (!authToken) {
@@ -8,4 +11,3 @@ if (!authToken) {
 } else {
   // rest of the code
 }
-

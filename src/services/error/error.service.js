@@ -1,4 +1,4 @@
-function showErrorMessage(text) {
+export function showErrorMessage(text) {
   const errorContainer = document.querySelector(".error_message-container");
   const errorMessageElement = document.getElementById(
     "error-message-barbershop"
@@ -13,7 +13,7 @@ function showErrorMessage(text) {
   if (errorContainer) errorContainer.style.display = "block"; // Show the container
 }
 
-function hideErrorMessage() {
+export function hideErrorMessage() {
   const errorContainer = document.querySelector(".error_message-container");
   const errorMessageElement = document.getElementById(
     "error-message-barbershop"

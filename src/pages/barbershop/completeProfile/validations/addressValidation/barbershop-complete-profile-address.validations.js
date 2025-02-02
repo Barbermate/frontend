@@ -1,3 +1,5 @@
+import { MAPBOX_ACCESS_TOKEN } from "../../../../../services/config/config.service";
+
 mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
 
 const addressInput = document.getElementById("address");
