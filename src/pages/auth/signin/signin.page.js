@@ -2,6 +2,7 @@ import { setCookie } from "../../../services/cookie/cookie.service";
 import { showErrorMessage } from "../../../services/error/error.service";
 import { hideErrorMessage } from "../../../services/error/error.service";
 import { BASE_URL } from "../../../services/config/config.service";
+import { updateUserData } from "../../../store/user.store";
 
 const form = document.getElementById("wf-form-Login-Form");
 
@@ -32,6 +33,10 @@ if (form && form.tagName === "FORM") {
 
       if (data.token) {
         setCookie("authToken", data.token, 30 * 24 * 60 * 60);
+        updateUserData({
+          profile: data.profile,
+          accountType: data.accountType,
+        });
 
         // Redirect the user to the desired page
         window.location.href = "https://barbermate-v2.webflow.io/";
