@@ -3,6 +3,7 @@ import { showErrorMessage } from "../../../services/error/error.service";
 import { hideErrorMessage } from "../../../services/error/error.service";
 import { BASE_URL } from "../../../services/config/config.service";
 import { updateUserData } from "../../../store/user.store";
+import { FRONTEND_SERVER_URL } from "../../../services/config/config.service";
 
 const form = document.getElementById("wf-form-Login-Form");
 
@@ -39,7 +40,7 @@ if (form && form.tagName === "FORM") {
         });
 
         // Redirect the user to the desired page
-        window.location.href = "https://barbermate-v2.webflow.io/";
+        window.location.href = `${FRONTEND_SERVER_URL}`;
       } else {
         console.error("Token not found in response:", data);
         alert("An error occurred. Redirecting...");

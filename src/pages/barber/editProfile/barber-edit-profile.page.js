@@ -5,6 +5,7 @@ import {
   hideErrorMessage,
 } from "../../../services/error/error.service";
 import { userData } from "../../../store/user.store";
+import { FRONTEND_SERVER_URL } from "../../../services/config/config.service";
 
 const BACKEND_URL = `${BASE_URL}/barber/profile/update`;
 
@@ -63,11 +64,10 @@ if (form && form.tagName === "FORM") {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        
+
         updateUserProfile(data.profile);
 
-        window.location.href =
-          "https://barbermate-v2.webflow.io/barber-profile";
+        window.location.href = `${FRONTEND_SERVER_URL}barber-profile`;
         return; // Stop further processing
       } else {
         const errorData = await response.json();

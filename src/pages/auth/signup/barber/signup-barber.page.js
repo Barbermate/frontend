@@ -3,6 +3,7 @@ import { setCookie } from "../../../../services/cookie/cookie.service";
 import { showErrorMessage } from "../../../../services/error/error.service";
 import { hideErrorMessage } from "../../../../services/error/error.service";
 import { updateUserData } from "../../../../store/user.store";
+import { FRONTEND_SERVER_URL } from "../../../../services/config/config.service";
 
 const form = document.getElementById("wf-form-Sign-up-for-Barber");
 
@@ -49,7 +50,7 @@ if (form && form.tagName === "FORM") {
         });
         // Redirect the user to the desired page
         window.location.href =
-          "https://barbermate-v2.webflow.io/barber-profile";
+          `${FRONTEND_SERVER_URL}barber-profile`;
       } else {
         console.error("Token not found in response:", data);
         alert("An error occurred. Redirecting...");
