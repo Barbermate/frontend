@@ -1,7 +1,6 @@
 import { userData } from "../store/user.store";
 
 if ("serviceWorker" in navigator && !navigator.serviceWorker.controller && userData) {
-  console.log("register service worker");
   try {
     await navigator.serviceWorker.register("/sw.js", {
       scope: "/",
@@ -26,6 +25,6 @@ if ("serviceWorker" in navigator && !navigator.serviceWorker.controller && userD
       }
     });
   } catch (e) {
-    console.log("Service Worker error:", err);
+    console.log("Service Worker error:", e);
   }
 }
